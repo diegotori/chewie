@@ -47,4 +47,4 @@ build/
 .classpath
 .settings
 
-coverage/**
+coverage/*

@@ -6,9 +6,7 @@ import 'package:chewie/src/utils/index.dart';
 /// over all State-Changes inside chewie
 ///
 class PlayerNotifier extends ConditionalChangeNotifier {
-  PlayerNotifier._(
-    bool hideStuff,
-  ) : _hideStuff = hideStuff;
+  PlayerNotifier._(bool hideStuff) : _hideStuff = hideStuff;
 
   bool _hideStuff;
 
@@ -21,8 +19,6 @@ class PlayerNotifier extends ConditionalChangeNotifier {
 
   // ignore: prefer_constructors_over_static_methods
   static PlayerNotifier init() {
-    return PlayerNotifier._(
-      true,
-    );
+    return PlayerNotifier._(true);
   }
 }
