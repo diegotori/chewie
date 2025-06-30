@@ -6,6 +6,7 @@ import 'package:chewie/src/models/options_translation.dart';
 import 'package:chewie/src/models/subtitle_model.dart';
 import 'package:chewie/src/notifiers/player_notifier.dart';
 import 'package:chewie/src/player_with_controls.dart';
+import 'package:chewie/src/utils/index.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -262,7 +263,7 @@ class ChewieState extends State<Chewie> {
 /// changes to the playback, such as a change to the seek position of the
 /// player, please use the standard information provided by the
 /// `VideoPlayerController`.
-class ChewieController extends ChangeNotifier {
+class ChewieController extends ConditionalChangeNotifier {
   ChewieController({
     required this.videoPlayerController,
     this.optionsTranslation,
@@ -637,17 +638,17 @@ class ChewieController extends ChangeNotifier {
 
   void enterFullScreen() {
     _isFullScreen = true;
-    notifyListeners();
+    maybeNotifyListeners();
   }
 
   void exitFullScreen() {
     _isFullScreen = false;
-    notifyListeners();
+    maybeNotifyListeners();
   }
 
   void toggleFullScreen() {
     _isFullScreen = !_isFullScreen;
-    notifyListeners();
+    maybeNotifyListeners();
   }
 
   void togglePause() {
